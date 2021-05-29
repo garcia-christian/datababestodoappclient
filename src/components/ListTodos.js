@@ -81,7 +81,7 @@ const ListTodos = ({setStatusU}) => {
                     const data = await jData.filter(todo => todo.user_id !== null);
                     setTodos(data);
                   
-                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/count-public`)
+                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/todos/count-public`)
                     const cData = await sqlcount.json();
 
         
@@ -95,7 +95,7 @@ const ListTodos = ({setStatusU}) => {
                     setTodos(data);
 
 
-                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/count-private/${uid}`)
+                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/todos/count-private/${uid}`)
                     const cData = await sqlcount.json();
 
                     console.log(cData.count)
