@@ -18,7 +18,7 @@ const Dashboard= ({setAuth}) => {
   async function getName(){
 
     try {
-        const response = await fetch(`https://datababestodoappclient.herokuapp.com/dashboard`,{
+        const response = await fetch(`https://datababestodoappserver.herokuapp.com/dashboard`,{
             method: "GET",
             headers: {token: localStorage.token}
         });

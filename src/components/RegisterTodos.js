@@ -20,7 +20,7 @@ const RegisterTodos= ({setAuth}) => {
                 
                 const body = {email,password,name}
 
-                const response = await fetch(`https://datababestodoappclient.herokuapp.com/auth/register`,{
+                const response = await fetch(`https://datababestodoappserver.herokuapp.com/auth/register`,{
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(body)

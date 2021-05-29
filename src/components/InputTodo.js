@@ -18,7 +18,7 @@ const InputTodo = ({ userId, statusU }) => {
             setPrivacy(localStorage.status)
             console.log(privacy)
                 const body = { desc, notes, userId, privacy };
-            const respo = await fetch("https://datababestodoappclient.herokuapp.com/todos", {
+            const respo = await fetch("https://datababestodoappserver.herokuapp.com/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)

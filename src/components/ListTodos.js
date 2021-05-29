@@ -13,7 +13,7 @@ const ListTodos = ({setStatusU}) => {
  
     const deleteTodo = async (id) => {
         try {
-            const deleteTodo = await fetch(`https://datababestodoappclient.herokuapp.com/todos/${id}`, {
+            const deleteTodo = await fetch(`https://datababestodoappserver.herokuapp.com/todos/${id}`, {
                 method: "DELETE"
 
             });
@@ -28,7 +28,7 @@ const ListTodos = ({setStatusU}) => {
     const updateCategory = async (id) => {
         try {
             const body = { categ }
-            const updateProgress = await fetch(`https://datababestodoappclient.herokuapp.com/todos/category/${id}`, {
+            const updateProgress = await fetch(`https://datababestodoappserver.herokuapp.com/todos/category/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -43,7 +43,7 @@ const ListTodos = ({setStatusU}) => {
    
     const getCategory = async () => {
         try {
-            const respo = await fetch("https://datababestodoappclient.herokuapp.com/todos/category")
+            const respo = await fetch("https://datababestodoappserver.herokuapp.com/todos/category")
             const jData = await respo.json();
 
             setCat(jData)
@@ -55,7 +55,7 @@ const ListTodos = ({setStatusU}) => {
     async function getID(){
 
         try {
-            const response = await fetch(`https://datababestodoappclient.herokuapp.com/dashboard`,{
+            const response = await fetch(`https://datababestodoappserver.herokuapp.com/dashboard`,{
                 method: "GET",
                 headers: {token: localStorage.token}
             });
@@ -76,26 +76,26 @@ const ListTodos = ({setStatusU}) => {
             const ID = await getID();
          
                 if(status==true){
-                    const respo = await fetch("https://datababestodoappclient.herokuapp.com/todos-public")
+                    const respo = await fetch("https://datababestodoappserver.herokuapp.com/todos-public")
                     const jData = await respo.json();
                     const data = await jData.filter(todo => todo.user_id !== null);
                     setTodos(data);
                   
-                    const sqlcount = await fetch(`https://datababestodoappclient.herokuapp.com/count-public`)
+                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/count-public`)
                     const cData = await sqlcount.json();
 
         
                     setCount(cData.count)
                   
                 } else  {
-                    const respo = await fetch(`https://datababestodoappclient.herokuapp.com/todos-private`)
+                    const respo = await fetch(`https://datababestodoappserver.herokuapp.com/todos-private`)
                     const jData = await respo.json();
                     
                     const data = await jData.filter(todo => todo.user_id == ID);
                     setTodos(data);
 
 
-                    const sqlcount = await fetch(`https://datababestodoappclient.herokuapp.com/count-private/${uid}`)
+                    const sqlcount = await fetch(`https://datababestodoappserver.herokuapp.com/count-private/${uid}`)
                     const cData = await sqlcount.json();
 
                     console.log(cData.count)
