@@ -36,7 +36,7 @@ const EditTodo = ({ todo,uid }) => {
         e.preventDefault();
         try {
            
-            const respo = await fetch(`https://datababestodoappserver.herokuapp.com/todos/${todo.todo_id}`, {
+            const respo = await fetch(`https://datababestodoappserver.herokuapp.com/updateprivacy/${todo.todo_id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" }
             })
